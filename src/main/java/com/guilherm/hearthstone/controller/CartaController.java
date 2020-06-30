@@ -32,8 +32,8 @@ public class CartaController {
         return ResponseEntity.ok().body(obj);
     }
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Carta objDTO) {
-        Carta obj = cartaService.insert(objDTO);
+    public ResponseEntity<Void> insert(@RequestBody Carta objCarta) {
+        Carta obj = cartaService.insert(objCarta);
         obj = cartaService.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
