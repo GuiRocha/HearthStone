@@ -1,8 +1,10 @@
 package com.guilherm.hearthstone.service;
 
+import com.guilherm.hearthstone.exception.ExceptionError;
 import com.guilherm.hearthstone.model.Carta;
 import com.guilherm.hearthstone.repository.CartaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

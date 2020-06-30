@@ -1,6 +1,9 @@
 package com.guilherm.hearthstone.model;
 
 import com.guilherm.hearthstone.exception.ExceptionError;
+import com.guilherm.hearthstone.service.CartaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -10,6 +13,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 public class Carta {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -31,7 +35,10 @@ public class Carta {
     @PrePersist
     public void prePersist(){
         if(ataque > 10){
-            throw new ExceptionError("O valor maximo é 10");
+            try {
+            } catch (ExceptionError ex) {
+                ResponseEntity.unprocessableEntity().body(ex.getMessage());
+            }
         }else if (defesa > 10){
             throw new ExceptionError("O valor maximo é 10");
         }
