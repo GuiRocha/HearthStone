@@ -30,5 +30,7 @@ public class CartaService {
         findById(id);
         cartaRepository.deleteById(id);
     }
-
+    public List<Carta> findByName(String text) {
+        return cartaRepository.findByNome(text);
+    }
 }
