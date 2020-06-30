@@ -70,5 +70,4 @@ class CartaServiceTest {
         cartaRepository.delete(carta);
         assertThat(cartaRepository.findById(carta.getId())).isEmpty();
     }
-
 }
