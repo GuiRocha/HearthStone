@@ -20,16 +20,24 @@ public class Carta {
             = "Não pode passar de 10")
     private int defesa;
 
+    private Integer tipo;
+
+    private Integer classe;
+
+
     public Carta() {
     }
 
-    public Carta(Long id, String nome, String descricao, int ataque, int defesa) {
+    public Carta(Long id, String nome, String descricao, int ataque, int defesa, Tipo tipo, Classe classe) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         this.ataque = ataque;
         this.defesa = defesa;
+        setTipo(tipo);
+        setClasse(classe);
     }
+
     public Long getId() {
         return id;
     }
@@ -68,5 +76,25 @@ public class Carta {
 
     public void setDefesa(int defesa) {
         this.defesa = defesa;
+    }
+
+    public Tipo getTipo() {
+        return Tipo.valueOf(tipo);
+    }
+
+    public void setTipo(Tipo tipo) {
+        if (tipo != null) {
+            this.tipo = tipo.getCode();
+        }
+    }
+
+    public Classe getClasse() {
+        return Classe.valueOf(classe);
+    }
+
+    public void setClasse(Classe classe) {
+        if (classe != null) {
+            this.classe = classe.getCode();
+        }
     }
 }

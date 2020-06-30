@@ -23,7 +23,7 @@ public class CartaController {
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<Carta>> findAll() {
-        List<Carta> list = cartaRepository.findAll();
+        List<Carta> list = cartaService.findAll();
         return ResponseEntity.ok().body(list);
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -44,7 +44,7 @@ public class CartaController {
         cartaService.delete(id);
         return ResponseEntity.noContent().build();
     }
-    @RequestMapping(value="/titlesearch", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value="/nome", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity <List<Carta>> findByName(@RequestParam(value = "text", defaultValue = "") String text) {
         text = URL.descodeParam(text);
         List<Carta> list  = cartaService.findByName(text);
