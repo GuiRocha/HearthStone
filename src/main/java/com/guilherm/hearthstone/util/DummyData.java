@@ -19,8 +19,8 @@ public class DummyData implements CommandLineRunner {
 
     public void run(String... args) throws Exception {
         cartaRepository.deleteAll();
-        Carta mago = new Carta(null, "bla", "blabla",10,10, Tipo.MAGIA, Classe.CACADOR);
-        Carta negro = new Carta(null, "Mago negro", "Joao bla bla bla",10,10, Tipo.CRIATURA, Classe.QUALQUER);
+        Carta mago = new Carta(null, "Assassino Casconero", "Um mero Arqueiro Élfico até se deparar com Sargeras.",5,7, Tipo.MAGIA, Classe.CACADOR);
+        Carta negro = new Carta(null, "Talho Duplo", "Uma cortada tão animada que vai ser dobrada.",1,10, Tipo.CRIATURA, Classe.QUALQUER);
 
         cartaRepository.saveAll(Arrays.asList(mago, negro));
     }

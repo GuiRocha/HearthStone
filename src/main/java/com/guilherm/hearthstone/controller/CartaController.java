@@ -3,6 +3,7 @@ import com.guilherm.hearthstone.model.Carta;
 import com.guilherm.hearthstone.repository.CartaRepository;
 import com.guilherm.hearthstone.service.CartaService;
 import com.guilherm.hearthstone.util.URL;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@Api(value = "carta")
 @RequestMapping(value = "/carta")
 public class CartaController {
     @Autowired
@@ -51,7 +53,7 @@ public class CartaController {
         return ResponseEntity.ok().body(list);
     }
     @RequestMapping(value="/tipo", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity <List<Carta>> tipo(@RequestParam(value = "codigo", defaultValue = "") Integer tipo) {
+    public ResponseEntity <List<Carta>> findByTipo(@RequestParam(value = "codigo", defaultValue = "") Integer tipo) {
         tipo = URL.descodeParamInt(tipo);
         List<Carta> list  = cartaService.findByTipo(tipo);
         return ResponseEntity.ok().body(list);
