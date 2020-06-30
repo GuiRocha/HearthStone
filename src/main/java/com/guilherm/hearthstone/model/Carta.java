@@ -30,7 +30,6 @@ public class Carta {
         this.ataque = ataque;
         this.defesa = defesa;
     }
-
     public Long getId() {
         return id;
     }
