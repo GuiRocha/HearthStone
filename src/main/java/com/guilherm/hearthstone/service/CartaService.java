@@ -33,4 +33,7 @@ public class CartaService {
     public List<Carta> findByName(String text) {
         return cartaRepository.findByNome(text);
     }
+    public List<Carta> findByTipo(Integer tipo) {
+        return cartaRepository.findByTipo(tipo);
+    }
 }

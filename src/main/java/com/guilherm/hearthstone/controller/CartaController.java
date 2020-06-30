@@ -50,4 +50,10 @@ public class CartaController {
         List<Carta> list  = cartaService.findByName(text);
         return ResponseEntity.ok().body(list);
     }
+    @RequestMapping(value="/tipo", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity <List<Carta>> tipo(@RequestParam(value = "text", defaultValue = "") Integer tipo) {
+        tipo = URL.descodeParamInt(tipo);
+        List<Carta> list  = cartaService.findByTipo(tipo);
+        return ResponseEntity.ok().body(list);
+    }
 }

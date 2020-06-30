@@ -15,6 +15,13 @@ public class URL {
             return "";
         }
     }
+    public static Integer descodeParamInt(Integer tipo){
+        try {
+            return Integer.valueOf(URLDecoder.decode(String.valueOf(tipo), "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            return Integer.valueOf("");
+        }
+    }
     public static Date convertDate(String textDate, Date defaultValue) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));

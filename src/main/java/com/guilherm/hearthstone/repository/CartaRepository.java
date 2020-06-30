@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface CartaRepository extends JpaRepository<Carta, Long> {
     public List<Carta> findByNome(String text);
+    public List<Carta> findByTipo(Integer tipo);
+
 }
