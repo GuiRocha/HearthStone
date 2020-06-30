@@ -25,6 +25,7 @@ public class CartaService {
     }
 
     public Carta insert(Carta obj){
+
         return cartaRepository.save(obj);
     }
 

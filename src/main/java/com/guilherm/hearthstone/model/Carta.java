@@ -35,10 +35,7 @@ public class Carta {
     @PrePersist
     public void prePersist(){
         if(ataque > 10){
-            try {
-            } catch (ExceptionError ex) {
-                ResponseEntity.unprocessableEntity().body(ex.getMessage());
-            }
+            throw new ExceptionError("O valor maximo é 10");
         }else if (defesa > 10){
             throw new ExceptionError("O valor maximo é 10");
         }
