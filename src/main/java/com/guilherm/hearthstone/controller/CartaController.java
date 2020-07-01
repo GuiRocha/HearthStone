@@ -28,7 +28,7 @@ public class CartaController {
         return ResponseEntity.ok().body(list);
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Carta> getUserById(@PathVariable Long id) {
+    public ResponseEntity<Carta> getById(@PathVariable Long id) {
         return cartaService.findById(id).map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
