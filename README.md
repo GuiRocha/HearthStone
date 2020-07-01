@@ -13,12 +13,12 @@
 
 ## Postman
 
-GET - `http://localhost:8080/carta/`
-GET by ID - `http://localhost:8080/carta/1`
-GET by TIPO - `http://localhost:8080/carta/tipo?codigo=2`
-GET by NOME - `http://localhost:8080/carta/nome?text=bla`
-POST - `http://localhost:8080/carta/`
-faça post utilizando JSON:
+1. GET - `http://localhost:8080/carta/`
+2. GET by ID - `http://localhost:8080/carta/1`
+3. GET by TIPO - `http://localhost:8080/carta/tipo?codigo=2`
+4. GET by NOME - `http://localhost:8080/carta/nome?text=bla`
+5. POST - `http://localhost:8080/carta/`
+- faça post utilizando JSON:
 {
   "nome": "Teste",
   "descricao": "Uma descrição",
@@ -28,4 +28,4 @@ faça post utilizando JSON:
   "classe": "PALADINO"
 }
     
-DELETE - `http://localhost:8080/carta/1`
+6. DELETE - `http://localhost:8080/carta/1`
