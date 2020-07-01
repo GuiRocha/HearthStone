@@ -19,13 +19,11 @@ public class CartaService {
         List<Carta> cartas = cartaRepository.findAll();
         return cartas;
     }
-    public Carta findById(Long id){
-        Optional<Carta> obj = cartaRepository.findById(id);
-        return obj.get();
+    public Optional<Carta> findById(Long id) {
+        return cartaRepository.findById(id);
     }
 
     public Carta insert(Carta obj){
-
         return cartaRepository.save(obj);
     }
 

@@ -5,14 +5,13 @@ import com.guilherm.hearthstone.service.CartaService;
 import com.guilherm.hearthstone.util.URL;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @Api(value = "carta")
@@ -29,22 +28,25 @@ public class CartaController {
         return ResponseEntity.ok().body(list);
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Carta> findById(@PathVariable Long id) {
-        Carta obj = cartaService.findById(id);
-        return ResponseEntity.ok().body(obj);
+    public ResponseEntity<Carta> getUserById(@PathVariable Long id) {
+        return cartaService.findById(id).map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
+
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Carta objCarta) {
-        Carta obj = cartaService.insert(objCarta);
-        obj = cartaService.insert(obj);
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+    @ResponseStatus(HttpStatus.CREATED)
+    public Carta insert(@RequestBody @Validated Carta obj){
+        return cartaRepository.save(obj);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        cartaService.delete(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<Carta> delete(@PathVariable Long id) {
+        return cartaService.findById(id)
+                .map(carta -> {
+                    cartaService.delete(id);
+                    return ResponseEntity.ok(carta);
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
     @RequestMapping(value="/nome", method=RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity <List<Carta>> findByName(@RequestParam(value = "text", defaultValue = "") String text) {
