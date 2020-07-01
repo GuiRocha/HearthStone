@@ -15,9 +15,9 @@
 ## Postman
 
 1. GET - `http://localhost:8080/carta/`
-2. GET by ID - `http://localhost:8080/carta/1`
-3. GET by TIPO - `http://localhost:8080/carta/tipo?codigo=2`
-4. GET by NOME - `http://localhost:8080/carta/nome?text=bla`
+2. GET by ID - `http://localhost:8080/carta/{id}`
+3. GET by TIPO - `http://localhost:8080/carta/tipo?codigo={id tipo 1 ou 2}`
+4. GET by NOME - `http://localhost:8080/carta/nome?text={nome}`
 5. POST - `http://localhost:8080/carta/`
 - faça post utilizando JSON:
 {
