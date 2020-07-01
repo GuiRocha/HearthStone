@@ -5,7 +5,8 @@
 1. Clone o projeto `git clone https://github.com/GuiRocha/HearthStone.git`
 2. Para fazer o Build do projeto use `mvn clean install`
 3. Rode usando `mvn spring-boot:run`ou Rode através do Jar `java -jar target/hearthstone-0.0.1-SNAPSHOT.jar`
-4. A aplicação estará disponivel na porta `localhost:8080/carta` - acesse usando o POSTMAN
+4. Rode os testes unitarios `mvn test`
+5. A aplicação estará disponivel na porta `localhost:8080/carta` - acesse usando o POSTMAN
 
 ## SwaggerUI - Endpoints
 
